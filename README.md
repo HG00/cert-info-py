@@ -12,7 +12,7 @@
 
 Quick install (with pipx):
 ```bash
-pipx install git+https://github.com/your-username/cert-info-python.git
+pipx install git+https://github.com/HG00/cert-info-python.git
 ```
 
 ## Usage

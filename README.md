@@ -1,6 +1,8 @@
-# cert-info (Python)
+# cert-info-py
 
-🔐 Simple cross-platform CLI tool to fetch and inspect TLS certificates.
+[![PyPI version](https://img.shields.io/pypi/v/cert-info-py)](https://pypi.org/project/cert-info-py/)
+
+🔐 Cross-platform CLI tool to fetch and inspect TLS certificates.
 
 ## Features
 - Shows certificate subject, issuer, validity, and expiry
@@ -12,7 +14,12 @@
 
 Quick install (with pipx):
 ```bash
-pipx install git+https://github.com/HG00/cert-info-python.git
+pipx install cert-info-py
+```
+
+Or via pip:
+```bash
+pip install cert-info-py
 ```
 
 ## Usage

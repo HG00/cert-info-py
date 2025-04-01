@@ -14,12 +14,7 @@
 
 Quick install (with pipx):
 ```bash
-pipx install cert-info-py
-```
-
-Or via pip:
-```bash
-pip install cert-info-py
+pipx install git+https://github.com/HG00/cert-info-py.git
 ```
 
 ## Usage

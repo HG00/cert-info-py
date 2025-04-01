@@ -2,7 +2,7 @@ import socket
 import ssl
 import argparse
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
 
@@ -20,15 +20,16 @@ def fetch_certificate(host, port):
 def parse_certificate(cert):
     subject = cert.subject.rfc4514_string()
     issuer = cert.issuer.rfc4514_string()
-    not_before = cert.not_valid_before
-    not_after = cert.not_valid_after
+    not_before = cert.not_valid_before_utc
+    not_after = cert.not_valid_after_utc
     serial = format(cert.serial_number, 'x').upper()
     fingerprint = cert.fingerprint(cert.signature_hash_algorithm).hex().upper()
     try:
         san = cert.extensions.get_extension_for_class(x509.SubjectAlternativeName).value.get_values_for_type(x509.DNSName)
     except x509.ExtensionNotFound:
         san = []
-    days_remaining = (not_after - datetime.utcnow()).days
+    now = datetime.now(timezone.utc)
+    days_remaining = (not_after - now).days
 
     return {
         "subject": subject,

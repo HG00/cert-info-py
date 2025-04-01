@@ -1,0 +1,21 @@
+name: Release cert-info
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            cert_info.py
+          draft: false
+          prerelease: false
